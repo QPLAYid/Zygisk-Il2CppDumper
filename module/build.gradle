@@ -75,7 +75,6 @@ afterEvaluate {
                     Files.move(srcPath, dstPath)
                 }
                 new File("$magiskDir/lib").deleteDir()
-                new File("$outDir/magisk_module_$variantLowered").deleteDir()
                 
             }
             
@@ -88,6 +87,9 @@ afterEvaluate {
             from magiskDir
             archiveFileName.set(zipName)
             destinationDirectory.set(outDir)
+            doLast{
+			new File("$outDir/magisk_module_$variantLowered").deleteDir()
+			}
         }
 
         task("push${variantCapped}", type: Exec) {
