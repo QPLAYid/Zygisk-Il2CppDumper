@@ -75,7 +75,12 @@ afterEvaluate {
                     Files.move(srcPath, dstPath)
                 }
                 new File("$magiskDir/lib").deleteDir()
+                new File("$outDir/magisk_module_$variantLowered").deleteDir()
+                
             }
+            
+
+            
         }
 
         task("zip${variantCapped}", type: Zip) {
